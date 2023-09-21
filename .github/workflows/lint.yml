@@ -3,7 +3,7 @@ name: Lint Workflow
 on:
   pull_request:
     branches:
-      - main # Adjust this to your main branch name
+      - main
 
 jobs:
   lint:
@@ -16,10 +16,10 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: '16' # Use the Node.js version you need
+          node-version: '16'
 
       - name: Install Dependencies
         run: npm install
 
       - name: Run Linting
-        run: npm run lint # Replace with your actual linting script
+        run: npm run lint 
