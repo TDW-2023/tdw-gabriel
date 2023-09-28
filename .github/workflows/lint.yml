@@ -29,6 +29,6 @@ jobs:
           COMMITTER="$(git log -1 --pretty=format:'%an')"
           REPO="${GITHUB_REPOSITORY}"
           BRANCH="${GITHUB_REF#refs/heads/}"
-          MESSAGE="Deployment to *${BRANCH}* branch of *${REPO}* by ${COMMITTER} has completed successfully! @general"
+          MESSAGE="Deployment to *${BRANCH}* branch of *${REPO}* by ${COMMITTER} has completed successfully! <!everyone>"
           PAYLOAD="{\"text\":\"$MESSAGE\"}"
           curl -H "Content-Type: application/json" -d "$PAYLOAD" "https://uapt33090.webhook.office.com/webhookb2/fbe74fe4-18e9-4d57-ad56-d45eb22e344e@c1025aae-98b9-4021-b4b6-c201214b884e/IncomingWebhook/f31db7b2682640cfab0fe7ff9838e553/e59e6ee1-b9db-452c-912a-6a639b61743d" 
