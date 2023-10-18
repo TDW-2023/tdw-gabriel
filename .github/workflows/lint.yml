@@ -24,12 +24,12 @@ jobs:
 
       - name: Run Prettier Check
         id: prettier-check
-        run: npx prettier . --check
+        run: npx prettier . --check --ignore-path .prettierignore
         continue-on-error: true
 
       - name: Run Prettier Format
         if: steps.prettier-check.outcome == 'failure'
-        run: npx prettier . --write
+        run: npx prettier . --write --ignore-path .prettierignore
 
       - name: Run Linting
         run: npm run lint
@@ -39,7 +39,7 @@ jobs:
           COMMITTER="$(git log -1 --pretty=format:'%an')"
           REPO="${GITHUB_REPOSITORY}"
           BRANCH="${GITHUB_HEAD_REF}"
-          MESSAGE="Deployment to *${BRANCH}* branch of *${REPO}* by ${COMMITTER} has completed successfully!"
+          MESSAGE="Deployment to *${BRANCH}* branch of *${REPO}* by *${COMMITTER}* has completed successfully!"
           PAYLOAD="{\"text\":\"$MESSAGE\"}"
           curl -H "Content-Type: application/json" -d "$PAYLOAD" "${{ secrets.MICROSOFT_TEAMS_WEBHOOK_URL }}"
 
